@@ -1,0 +1,39 @@
+[package]
+name = "any-desk"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "any_desk_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+scrap = "0.5.0"
+opencv = { version = "0.94.2", features = ["clang-runtime"] }
+x264 = "0.5.0"
+quinn = "0.11.6"
+enigo = "0.3.0"
+
+# 新增依赖
+webrtc = "0.12.0"                    # WebRTC 支持
+tokio = { version = "1.0", features = ["full"] } # 异步运行时
+ffmpeg-next = { version = "7.1.0", features = ["codec"] }  # FFmpeg 绑定，支持 H.265 
+hole-punch = "0.0.3"               # NAT 穿透支持 
+parking_lot = "0.12"
+once_cell = "1.20.3"
+futures = "0.3.31"
+bytes = "1.10.0"
